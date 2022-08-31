@@ -1,0 +1,57 @@
+.movie-item-container{
+    position: relative;
+    height: 200px;
+    border-radius: 30px;
+    background: #835555;
+
+    .movie-data{
+        position: absolute;
+        height: 180px;
+        top: 10px;
+        left: 10px;
+
+        .title{
+            font-size: 14px;
+            font-weight: 800;
+        }
+        
+        .movie-argument{
+            width: 180px;
+            height: 100px;
+
+              .ellipsis {
+                width: 180px;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 7;
+                -webkit-box-orient: vertical;
+                font-size: 12px;
+              }
+        }
+        .small-text{
+            font-size: 10px;
+        }
+    }
+
+    .movie-image{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        height: 180px;
+        img{
+            max-height:180px;
+            border-radius: 30px;
+            object-fit: cover;
+        }
+    }
+}
+
+
+
+ion-list{
+    background: var(--ion-color-dark);
+}
+
+ion-toolbar{
+    --background: #835555;
+}

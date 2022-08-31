@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ingresá tus datos!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="registrationForm" (ngSubmit)="signUp()">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="stacked">Nombre</ion-label>
+            <ion-input formControlName="firstname" type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="stacked">Apellido</ion-label>
+            <ion-input formControlName="lastname" type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="stacked">Email</ion-label>
+            <ion-input formControlName="email" type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="stacked">Contraseña</ion-label>
+            <ion-input formControlName="password" type="password"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="stacked">Repetir Contraseña</ion-label>
+            <ion-input formControlName="repeatPassword" type="password"></ion-input>
+          </ion-item>
+          <div *ngIf="registrationForm.controls.repeatPassword.touched && registrationForm.controls.repeatPassword.invalid">
+            <ion-label *ngIf="registrationForm.controls.repeatPassword.errors.confirmedValidator">Las contraseñas no coinciden</ion-label>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="showProgressBar()">
+        <ion-col>
+          <ion-label>{{_passwordStrengthLabel.value}}</ion-label>
+          <ion-progress-bar [value]="_passwordStrength.value / 3"></ion-progress-bar>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-button [disabled]="registrationForm.invalid" type="submit">
+            Confirmar
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+
+</ion-content>

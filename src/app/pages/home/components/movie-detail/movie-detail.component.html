@@ -1,0 +1,80 @@
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <p>{{movie.fullTitle}}</p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <p class="ellipsis">{{movie.argument}}</p>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="loadingReviews">
+    <ion-col class="ion-text-center">
+      <div>
+        <ion-label>Cargando opiniones...</ion-label>
+        <br>
+        <ion-spinner name="dots"></ion-spinner>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="!loadingReviews">
+    <ion-col>
+      <ion-list>
+        <div class="review-item-container" [ngClass]="userReviewUploaded ? 'uploaded-review' : 'pending-review'">
+          
+            <ion-row class="ion-no-padding">
+              <ion-col class="ion-no-padding">
+                <ion-row>
+                  <ion-col>
+                    <ion-label *ngIf="userReviewUploaded">{{userReview.description}}</ion-label>
+                    <ion-input *ngIf="!userReviewUploaded" [placeholder]="userReview.description"
+                      (ionChange)="description = $event?.detail?.value"></ion-input>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <div class="review-star-rating">
+                      <star-rating [starType]="'svg'" [readonly]="!userReviewUploaded" [labelText]="userReview.rate"
+                        labelPosition="left" [rating]="userReview.rate" [step]="0.5" [showHalfStars]="true"
+                        (ratingChange)="rate = $event?.rating"
+                        >
+                      </star-rating>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+              <ion-col class="ion-text-center" size="2">
+                <ion-icon *ngIf="userReviewUploaded" name="cloud-done-outline"></ion-icon>
+                <ion-icon *ngIf="!userReviewUploaded" name="cloud-upload-outline" (click)="uploadReview()"></ion-icon>
+              </ion-col>
+            </ion-row>
+        </div>
+        <ng-container *ngFor="let review of otherReviews">
+          <div class="review-item-container">
+            <ion-row>
+              <ion-col>
+                <ion-label>{{review.description}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row class="ion-justify-content-center ion-align-items-center">
+              <ion-col>
+                <div class="review-star-rating">
+                  <star-rating [starType]="'svg'" readonly="true" [labelText]="review.rate" labelPosition="left"
+                    [rating]="review.rate" [step]="0.5" [showHalfStars]="true">
+                  </star-rating>
+                </div>
+              </ion-col>
+            </ion-row>
+          </div>
+
+        </ng-container>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <p>Año: {{movie.year}}, Rating: {{movie.rate}}</p>
+    </ion-col>
+  </ion-row>
+</ion-grid>

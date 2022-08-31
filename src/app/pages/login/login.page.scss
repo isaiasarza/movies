@@ -1,0 +1,47 @@
+ion-toolbar {
+    --background: transparent;
+}
+
+ion-content {
+    --background:
+    url('../../../assets/images/cine.jpg') no-repeat center/cover;
+    opacity: 0.75;
+
+    .container {
+        opacity: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+
+        .box {
+            width: 300px;
+        }
+    }
+
+    ion-item{
+        --background: transparent;
+        --border-width: 2px;
+        --border-radius: 20px;
+        --border-color: #cac0a6;
+        --highlight-color-focused: #cac0a6;
+        ion-label{
+            --highlight-color-focused: #cac0a6;
+        }
+    }
+
+    ion-button{
+        --border-radius: 30px;
+        --background: #cac0a6;
+        --color: grey;
+        font-weight: 700;
+        width: 100%;
+    }
+
+}
+
+ion-content.ion-color-secondary {
+    --ion-color-base: none !important;
+}
+

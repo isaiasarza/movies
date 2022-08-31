@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Nuestras Películas!
+    </ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let movie of movies" class="ion-margin">
+    <div class="movie-item-container" (click)="goToMovieDetail(movie)">
+      <div class="movie-data">
+        <p class="title">{{movie.shortTitle}}</p>
+        <div class="movie-argument">
+          <p class="ellipsis">{{movie.argument}}</p>
+        </div>
+        <p class="small-text">Año: {{movie.year}}, Rating: {{movie.rate}}</p>
+      </div>
+      
+      <div class="movie-image">
+        <img [src]="movie.imageUrl" alt="">
+      </div>
+    </div>
+  </ion-list>
+</ion-content>

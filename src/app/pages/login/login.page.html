@@ -1,0 +1,40 @@
+<ion-content>
+  <div class="container">
+    <div class="box">
+      <form [formGroup]="loginForm" (ngSubmit)="signIn()">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label position="stacked">Email</ion-label>
+                <ion-input formControlName="email" type="email"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label position="stacked">Contraseña</ion-label>
+                <ion-input formControlName="password" type="password"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button type="submit">
+                Ingresar
+              </ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button (click)="goToRegistrationPage()">
+                Crear Cuenta
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+    </div>
+  </div>
+</ion-content>
